@@ -1,0 +1,24 @@
+package com.Sedrak.AutoMessager.Service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.Sedrak.AutoMessager.Model.Account;
+import com.Sedrak.AutoMessager.Repository.AccountRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class AccountService {
+
+  private final AccountRepository accountRepo;
+
+  @Transactional(readOnly = true)
+  public List<Account> findAll() {
+    return accountRepo.findAll();
+  }
+
+}
