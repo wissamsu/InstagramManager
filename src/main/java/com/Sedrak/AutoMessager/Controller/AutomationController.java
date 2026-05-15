@@ -2,6 +2,7 @@ package com.Sedrak.AutoMessager.Controller;
 
 import java.util.List;
 
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +28,7 @@ public class AutomationController {
 
   @PostMapping("/sendMessagesToEveryoneNow")
   @Operation(summary = "Send messages to everyone now")
+  @Scheduled(cron = "0 0 0 * * *")
   public void sendMessages() {
     List<Account> accounts = accountService.findAll();
     try {
